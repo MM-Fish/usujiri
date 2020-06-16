@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガヤ釣りエリア１</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+  <section id="index">
+    <section id="header">
+      <h1>ガヤ釣り体験ゲーム</h1>
+      <p>ガヤ釣りにチャレンジ</p>
+    </section>
+    <section id="contents">
+      <div id="tutorial">
+        <h2>1. 遊び方 How to play</h2>
+        <video class="in_media">
+          <source src="movie/test.MP4">
+        </video>
+      </div>
+      <div id="turi">
+        <h2>2. 好きな場所を選んでゲームを開始！ Let's start game!</h2>
+        <div class="game">
+          <span id="to_area1" class="link">エリア１</span><br>
+          <video class="in_media">
+            <source src="movie/test.MP4">
+          </video>
+        </div>
+        <div class="game">
+          <span id="to_area2" class="link">エリア２</span><br>
+          <video class="in_media">
+            <source src="movie/test.MP4">
+          </video>
+        </div>
+      </div>
+      <div id="your_tyouka">
+        <h2>3. 釣果 your records!</h2>
+        <ul id="your_records"></ul>
+      </div>
+      <div id="usujiri_info">
+        <h2>4. 臼尻の研究について興味のある方へ</h2>
+        <p>臼尻の研究について興味のある方へ</p>
+      </div>
+    </section>
+    <section id="footer">
+    </section>
+  </section>
+  <section class = "game" id = area1>
+    <video id="media" preload="metadata">
+      <source src="movie/test.MP4">
+    </video>
+    <div id="game_finish">
+      <!--ゲーム終了画面を表示するためのdiv要素--> 
+      <div>
+        <ul id="all_records">
+          <li>最終スコア</li>
+          <li><span id = tyouka>合計: 0尾</span></li>
+          <li><span id="to_index" class="link">ホームに戻る</span></li>
+        </ul>
+      </div>
+    </div>
+    <div id="status">
+      <span id = 'sec'>55</span>S&nbsp;&nbsp;
+      <span id = 'num'>0</span>匹
+    </div>
+    <div id="getfish">
+      <!--釣れた時のアイコンを表示するためのdiv要素--> 
+    </div>
+    <div class="button">
+      <div id="btn_play" class = "btn btn1">
+        <div class="btn_text">Play</div>
+      </div>
+      <div id="btn_pause" class = "btn btn2">
+        <div class="btn_text">Pause</div>
+      </div>
+      <div id="btn_try" class = "btn btn1">
+        <div class="btn_text">Try</div>
+      </div>
+    </div>
+  </section>
+  <script src="main.js"></script>
+</body>
+</html>
