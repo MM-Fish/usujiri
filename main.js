@@ -128,7 +128,7 @@ function getfish(catch_records, species_name, size_mean, size_sd) {
   // 画像
   var fishgazou = document.createElement('img');
   fishgazou.className = 'fishgazou';
-  fishgazou.src = "movie/mebaru.png";
+  fishgazou.src = "https://drive.google.com/uc?export=view&id=1eeB_F_NANaBbvmnw5AoWIgmtCMCy4t1G";
   div_getfish1.appendChild(fishgazou);
   
   // テキスト
