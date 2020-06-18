@@ -1,6 +1,7 @@
 body{
   font-family:Verdana,Arial;
-  font-size:14px;
+  font-size:2vw;
+  background-color: rgba(230, 240, 240);
 }
 
 ul {
@@ -12,51 +13,119 @@ ul {
   cursor:  pointer;
 }
 
+*{
+  margin: 0px;
+  padding: 0px;
+}
 
 /* index用CSS */
+#index{
+  text-align: center;
+}
+
 #header{
+  position: relative;
+  top: 0;
   margin-bottom:2%;
-  border-bottom: 1px solid #ccc;
+  background-color: royalblue;
+  height: 900px;
+  width: 100%;
+}
+
+#usujiri{
+  position: absolute;
+  top: 1%;
+  left: 2%;
+  z-index: 2;
+}
+
+#usujiri a{
+  color: white;
+}
+
+#header h1{
+  position: absolute;
+  font-size:bold;
+  font-size: 4.5vw;
+  top:50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  color: white;
 }
 
 #footer{
-  font-size:12px;
-  color:#ccc;
+  font-size:1vw;
   text-align:center;
   border-top:1px solid #ccc;
   padding:10px 0 20px;
 }
 
 #tutorial,#turi,#your_tyouka,#usujiri_info{
-  margin-bottom:2%;
-}
-
-.in_media{
-width: 60%;
-}
-
-#index h1{
-  font-size:bold;
-  font-size: 3vw;
-}
-
-#index h2,h3{
-  font-size:bold;
+  margin-bottom:5%;
 }
 
 #index h2{
-  font-size:2vw;
-  border-left:5px solid #ccc;
-  padding:3px 0 3px 10px;
-  margin-bottom:10px;
+  font-size:3vw;
 }
 
-#your_records li{
-  font-size: 1.5vw;
-  display: inline-block;
-  width: 20%;
-  margin-right: 2%;
+.in_media{
+  width: 90%;
+  font-weight: bold;
+  border-radius: 10%;
+  position: relative;
 }
+
+.to_area{
+  position: absolute;
+  top:5%;
+  left: 50%;
+  transform: translateX(-50%);
+  color:white;
+  font-weight: bold;
+  font-size: 2.5vw;
+}
+
+#game2{
+  margin-top: 2%;
+}
+
+#result_summary{
+  position: relative;
+  margin: auto;
+  background-color: white;
+  width: 90%;
+  padding-top: 50.625%;
+  border-radius: 10%;
+  overflow: hidden;
+}
+
+#div_records{
+  position: absolute;
+  top: 0;
+  color:white;
+  background-color: rgb(42, 197, 235);
+  width: 100%;
+  padding-top: 20%;
+  height: 0px;
+  overflow: hidden;
+}
+
+#divul_records{
+  position: absolute;
+  top: 0;
+  padding-top: 2%;
+  width: 100%;
+  height: 1000px;
+}
+
+#li_records li{
+  display: inline-block;
+  text-align: left;
+  width: 30%;
+  margin: 0 0 1% 1%;
+}
+
 
 /* game用CSS */
 #area1{

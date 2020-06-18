@@ -24,12 +24,15 @@ to_index.addEventListener('click',function(){
   index.style.display = "block";
 });
 
+// ヒストグラム作成関数
+
 
 // game用JS
 const mediaElem = document.getElementById('media');
 const playBtn = document.getElementById('btn_play');
 const pauseBtn = document.getElementById('btn_pause');
 const tryBtn = document.getElementById('btn_try');
+const hist_records = document.getElementById('hist_records')
 
 // 毎秒実行する関数
 mediaElem.addEventListener('timeupdate',function(){
@@ -50,7 +53,7 @@ mediaElem.addEventListener('timeupdate',function(){
       species.push(catch_records[i].species);
       var li = document.createElement('li');
       li.textContent=`${i+1}.${catch_records[i].species} (${catch_records[i].size}cm)`;
-      document.getElementById('your_records').appendChild(li);
+      document.getElementById('li_records').appendChild(li);
       var total = catch_records.length;
       var gyosyu = species.filter((elem, index, self) => self.indexOf(elem) === index);
       var ngyosyu = gyosyu.length
@@ -89,7 +92,7 @@ tryBtn.addEventListener('click', function(){
     change_btn(tryBtn);
     setTimeout(function(){
       change_btn(tryBtn);
-    }, 1000)
+    }, 500)
   }
 });
 
@@ -143,7 +146,7 @@ function getfish(catch_records, species_name, size_mean, size_sd) {
   // 1秒後に消える
   setTimeout(function(){
     div_getfish.textContent = null;
-  }, 1000)
+  }, 500)
 
   // 記録として配列に格納
   catch_records.push({species: species, size: Math.floor(size)});
