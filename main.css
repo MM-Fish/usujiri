@@ -28,7 +28,7 @@ ul {
   top: 0;
   margin-bottom:2%;
   background-color: royalblue;
-  height: 900px;
+  padding-top: 50%;
   width: 100%;
 }
 
@@ -70,7 +70,7 @@ ul {
 }
 
 .in_media{
-  width: 90%;
+  width: 80%;
   font-weight: bold;
   border-radius: 10%;
   position: relative;
@@ -86,7 +86,8 @@ ul {
   font-size: 2.5vw;
 }
 
-#game2{
+#game1, #game2{
+  position: relative;
   margin-top: 2%;
 }
 
@@ -94,8 +95,8 @@ ul {
   position: relative;
   margin: auto;
   background-color: white;
-  width: 90%;
-  padding-top: 50.625%;
+  width: 80%;
+  padding-top: 35%;
   border-radius: 10%;
   overflow: hidden;
 }
@@ -149,7 +150,7 @@ ul {
   background-color: rgba(0, 0, 0, 0.50);
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 100;
   font-size: 2vw;
 }
 
@@ -170,7 +171,7 @@ ul {
   left: 3%;
   z-index: 2;
   color: azure;
-  font-size: 20px;
+  font-size: 2vw;
 }
 
 #status span{
@@ -184,6 +185,7 @@ ul {
   left: 10%;
   z-index: 2;
 }
+
 
 .getfish1 {
   display: table;
@@ -211,12 +213,57 @@ ul {
   padding-left: 50%;
 }
 
+/* 魚表示CSS */
+#div_apfish{
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  padding-top: 10%;
+  border: solid;
+}
+
+.size_apfish{
+  /* 魚が釣れる領域（魚種によって変更） */
+  width: 15%;
+}
+
+.div_apfish_out{
+  background-image: linear-gradient(#cad1f5 0%, #6f98f0 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+
+.div_apfish_in1{
+  position: absolute;
+  /* 魚が逃げる領域 */
+  width: 50%;
+  left: 25%;
+  top: 25%;
+}
+
+.div_apfish_in2{
+  background-image: linear-gradient(#f5daca 0%, #f16d6d 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+
+.div_apfishimg{
+  position: absolute;
+  left: 0%;
+  top: 7%;
+  overflow: hidden;
+}
+
+.appearfish {
+  /* 画像サイズ */
+  width: 130%;
+}
+
+/* ボタン用CSS */
 .button{
   position: absolute;
   right: 0%;
   bottom: 0%;
   width: 10%;
-  padding-top: 10%
+  padding-top: 10%;
 }
 
 .btn{
@@ -226,6 +273,9 @@ ul {
   padding-top: 100%;
   border-radius: 50%;
   z-index: 1;
+}
+
+.btnp{
   cursor:  pointer;
 }
 

@@ -21,23 +21,23 @@
       <div id="tutorial">
         <h2>遊び方 How to play</h2>
         <video class="in_media">
-          <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download">
-          <!-- <source src="gazou/test.MP4"> -->
+          <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
+          <source src="gazou/test.MP4">
           </video>
       </div>
       <div id="turi">
         <h2>ゲームを開始！ Let's start game!</h2>
-        <div class="game">
+        <div id="game1">
           <video class="in_media">
-            <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download">
-            <!-- <source src="gazou/test.MP4"> -->
+            <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
+            <source src="gazou/test.MP4">
           </video>
           <span class="to_area link" id="to_area1">エリア１</span>
         </div>
-        <div class="game" id="game2">
+        <div id="game2">
           <video class="in_media">
-            <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download">
-            <!-- <source src="gazou/test.MP4"> -->
+            <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
+            <source src="gazou/test.MP4">
           </video>
           <span class="to_area link" id="to_area2">エリア２</span>
         </div>
@@ -59,11 +59,13 @@
     <section id="footer">
     </section>
   </section>
-  <section class = "game" id = area1>
+  <section class="game" id=area1>
     <video id="media" preload="metadata">
-      <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download">
-      <!-- <source src="gazou/test.MP4"> -->
+      <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
+      <source src="gazou/test.MP4">
     </video>
+    <div id="div_apfish" class="size_apfish"></div>
+    <!-- <img src="gazou/favi.png" class="appearfish"> -->
     <div id="game_finish">
       <!--ゲーム終了画面を表示するためのdiv要素--> 
       <div>
@@ -82,17 +84,17 @@
       <!--釣れた時のアイコンを表示するためのdiv要素--> 
     </div>
     <div class="button">
-      <div id="btn_play" class = "btn btn1">
+      <div id="btn_play" class = "btn btnp btn1">
         <div class="btn_text">Play</div>
       </div>
-      <div id="btn_pause" class = "btn btn2">
+      <div id="btn_pause" class = "btn btnp btn2">
         <div class="btn_text">Pause</div>
       </div>
-      <div id="btn_try" class = "btn btn1">
+      <div id="btn_try" class = "btn btnp btn1">
         <div class="btn_text">Try</div>
       </div>
     </div>
-  </section>
+</section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <script src="main.js"></script>
 </body>

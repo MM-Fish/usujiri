@@ -40,6 +40,10 @@ mediaElem.addEventListener('timeupdate',function(){
   var playTime = mediaElem.duration - mediaElem.currentTime;
   var playTimeDisplay = Math.round(playTime);
   playTimeBox.innerHTML = playTimeDisplay;
+  var x = `${-Math.floor( Math.random() * 600)}%`;
+  var y = `${-Math.floor( Math.random() * 480) - 20}%`;  
+  appearfish(x,y);
+
   // 終了したときの関数
   if(mediaElem.duration == mediaElem.currentTime){
     mediaElem.pause()
@@ -65,6 +69,78 @@ mediaElem.addEventListener('timeupdate',function(){
     };
   };
 });
+
+// 魚出現関数
+function appearfish(x,y){
+  var appearance = Math.floor( Math.random() * 101 );
+  if(appearance <= 20){
+    // div取得（基準位置）
+    var div_apfish = document.getElementById('div_apfish');
+
+    // 外枠div
+    var div_apfish_out = document.createElement('div');
+    fishclass = "btn div_apfish_out";
+    div_apfish_out.className = fishclass;
+    div_apfish.appendChild(div_apfish_out);
+
+    // 内枠サイズdiv
+    var div_apfish_in1 = document.createElement('div');
+    fishclass = "div_apfish_in1";
+    div_apfish_in1.className = fishclass;
+    div_apfish_out.appendChild(div_apfish_in1);
+    
+    // 内枠div
+    var div_apfish_in2 = document.createElement('div');
+    fishclass = "btn div_apfish_in2";
+    div_apfish_in2.className = fishclass;
+    div_apfish_in1.appendChild(div_apfish_in2);
+    
+    // 画像div
+    var div_apfishimg = document.createElement('div');
+    fishclass = "div_apfishimg";
+    div_apfishimg.className = fishclass;
+    div_apfish_in2.appendChild(div_apfishimg);
+    
+    // 画像
+    var apfishimg = document.createElement('img');
+    apfishimg.src = "gazou/favi.png";
+    fishclass = `appearfish`
+    apfishimg.className = fishclass
+    div_apfishimg.appendChild(apfishimg);
+    
+    // 要素追加，位置指定
+    div_apfish_out.style.left = x;
+    div_apfish_out.style.top = y;
+
+    // 1秒後に消える
+    setTimeout(function(){
+      div_apfish_out.remove();
+    }, 5000)
+  }
+}
+
+// click media
+mediaElem.addEventListener('click',function(){
+    var x = `${event.pageX}px`;
+    var y = `${event.pageY}px`;
+    if (document.getElementsByClassName("appearfish").length > 0) {
+      var fish = document.getElementsByClassName("appearfish");
+      console.log("クリック");
+      for(i=0;i<document.getElementsByClassName("appearfish").length;i++){
+        var xfish = fish[i].getBoundingClientRect().left ;
+        var yfish = fish[i].getBoundingClientRect().top ;
+        console.log("カーソル位置");
+        console.log(event.pageX, event.pageY);
+        console.log("魚位置");
+        console.log(xfish, yfish);
+        var xdis = Math.abs(event.pageX - xfish);
+        var ydis = Math.abs(event.pageY - yfish);
+        console.log("距離");
+        console.log(xdis, ydis);
+      }
+    }
+});
+
 
 // play btn
 playBtn.addEventListener('click',function(){
@@ -95,7 +171,6 @@ tryBtn.addEventListener('click', function(){
     }, 500)
   }
 });
-
 
 // 関数
 function getfish1(catch_records){
