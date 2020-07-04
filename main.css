@@ -218,13 +218,14 @@ ul {
   position: absolute;
   right: 0%;
   bottom: 0%;
-  padding-top: 10%;
-  border: solid;
+  border-style: solid;
+  width: 100%;
 }
 
-.size_apfish{
-  /* 魚が釣れる領域（魚種によって変更） */
-  width: 15%;
+.div_apfish_ind{
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
 }
 
 .div_apfish_out{
@@ -234,10 +235,6 @@ ul {
 
 .div_apfish_in1{
   position: absolute;
-  /* 魚が逃げる領域 */
-  width: 50%;
-  left: 25%;
-  top: 25%;
 }
 
 .div_apfish_in2{
@@ -247,14 +244,17 @@ ul {
 
 .div_apfishimg{
   position: absolute;
-  left: 0%;
-  top: 7%;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
   overflow: hidden;
+  width: 95%;
 }
 
-.appearfish {
+.apfishimg {
   /* 画像サイズ */
-  width: 130%;
+  width: 100%;
 }
 
 /* ボタン用CSS */
@@ -304,6 +304,7 @@ ul {
 }
 
 #btn_try{
+  display: none;
   left: -55%;
   top: -110%;
 }
