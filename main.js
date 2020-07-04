@@ -1,3 +1,10 @@
+const mediaElem = document.getElementById('media');
+const playBtn = document.getElementById('btn_play');
+const pauseBtn = document.getElementById('btn_pause');
+const tryBtn = document.getElementById('btn_try');
+const hist_chart = document.getElementById('hist_chart')
+
+
 // ページ移行
 var to_area1 = document.getElementById('to_area1');
 to_area1.addEventListener('click',function(){
@@ -24,20 +31,16 @@ to_index.addEventListener('click',function(){
   index.style.display = "block";
 });
 
-// ヒストグラム作成関数
+// 空のヒストグラム作成
+hist_range = 36
+var hist_data1 = new Array(hist_range).fill(0);
+make_hist_chart(hist_range, hist_data1);
 
 
 // game用JS
-const mediaElem = document.getElementById('media');
-const playBtn = document.getElementById('btn_play');
-const pauseBtn = document.getElementById('btn_pause');
-const tryBtn = document.getElementById('btn_try');
-const hist_records = document.getElementById('hist_records')
-
-
 // 毎秒実行する関数
 var catch_records = [];
-var appear_fish = [];
+var ap_fish = [];
 var counts = 0;
 mediaElem.addEventListener('timeupdate',function(){
   counts++
@@ -46,18 +49,19 @@ mediaElem.addEventListener('timeupdate',function(){
   var playTimeDisplay = Math.round(playTime);
   playTimeBox.innerHTML = playTimeDisplay;
   var appearance = Math.floor( Math.random() * 101 );
-  if(appearance <= 20){
-    appearfish(catch_records, counts, ap_species, appear_fish);
+  if(appearance <= 50){
+    appearfish(catch_records, counts, ap_species, ap_fish);
   }
 
   // 終了したときの関数
   if(mediaElem.duration == mediaElem.currentTime){
     mediaElem.pause()
     var element = document.getElementById('game_finish');
-    element.style.display = "block"
-    species = []
-    size = []
-    tyouka = []
+    element.style.display = "block";
+    species = [];
+    size = [];
+    tyouka = [];
+    make_hist(catch_records, hist_range);
     for (i=0; i < catch_records.length; i++){
       size.push(catch_records[i].size);
       species.push(catch_records[i].species);
@@ -78,44 +82,94 @@ mediaElem.addEventListener('timeupdate',function(){
 
 
 // 関数
-// 魚出現関数(x,y,species)と引数を3つにして，魚種ごとに各値（出現時間，サイズ等）を変える
+// ヒストグラム作成関数
+function make_hist(catch_records, hist_range){
+  // 参照渡し
+  var gayas = catch_records.filter(v => v.species === "エゾメバル");
+  //値渡し
+  gayas = JSON.stringify(gayas);
+  gayas = JSON.parse(gayas);
+  // 切り捨て
+  gayas_size = gayas.map(v => Math.floor(v.size));
+  console.log(gayas_size);
+
+  // ヒストグラムデータ作成
+  var hist_data1 = new Array(hist_range).fill(0);
+  gayas_size.map(v => hist_data1[v]++);
+  make_hist_chart(hist_range, hist_data1);
+}
+
+function make_hist_chart(hist_range, hist_data1){
+  var hist_data2 = {
+    labels: [...Array(hist_range).keys()].map(v => v += 5),
+    datasets: [{
+    label:"エゾメバル",
+    backgroundColor: "#5d94e7",
+    borderWidth: `${3}vw`,
+    data: hist_data1
+    }]
+  }
+  // ヒストグラム作成
+  var histogram = new Chart(hist_chart, {
+    type: 'bar',
+    data: hist_data2,
+    options: {
+      title: {
+        display: true,
+        text: 'エゾメバル体長別釣果'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMax: 20,
+            suggestedMin: 0,
+            stepSize: 1
+          }
+        }]
+      }
+    }
+  });
+}
+
 // 魚種
 var ap_species = [
   {
-    "species" : "ミズダコ", "size_out1": "25", "size_out2": "6", "size_in": "98", "pic": "gazou/mizu.png", "time": "2000"
+    "species" : "ミズダコ", "size_out1": "25", "size_out2": "6", "size_in": "98", "pic": "gazou/mizu.png", "time": "4000", "size_mean": "15","size_sd": "5"
   },
   {
-    "species" : "アイナメ", "size_out1": "20", "size_out2": "6", "size_in": "90", "pic": "gazou/aina.png", "time": "3000"
+    "species" : "ヒラメ", "size_out1": "20", "size_out2": "6", "size_in": "90", "pic": "gazou/hira.png", "time": "3000","size_mean": "45","size_sd": "10"
   },
   {
-    "species" : "ヒラメ", "size_out1": "15", "size_out2": "6", "size_in": "75", "pic": "gazou/hira.png", "time": "4000"
+    "species" : "アイナメ", "size_out1": "15", "size_out2": "6", "size_in": "75", "pic": "gazou/aina.png", "time": "3000","size_mean": "35","size_sd": "10"
   },
   {
-    "species" : "マゾイ", "size_out1": "10", "size_out2": "6", "size_in": "60", "pic": "gazou/mazo.png", "time": "5000"
+    "species" : "ゴッコ", "size_out1": "10", "size_out2": "4", "size_in": "75", "pic": "gazou/gok.png", "time": "4000","size_mean": "27.5","size_sd": "6.125"
   },
   {
-    "species" : "オニカジカ", "size_out1": "6", "size_out2": "4", "size_in": "70", "pic": "gazou/oni.png", "time": "4000"
+    "species" : "エゾメバル", "size_out1": "10", "size_out2": "6", "size_in": "60", "pic": "gazou/mazo.png", "time": "5000","size_mean": "15","size_sd": "3"
   },
   {
-    "species" : "ゴッコ", "size_out1": "6", "size_out2": "4", "size_in": "70", "pic": "gazou/gok.png", "time": "4000"
+    "species" : "オニカジカ", "size_out1": "10", "size_out2": "4", "size_in": "75", "pic": "gazou/oni.png", "time": "4000","size_mean": "20","size_sd": "2.5"
   },
   {
-    "species" : "イソバテング", "size_out1": "6", "size_out2": "4", "size_in": "80", "pic": "gazou/iso.png", "time": "3000"
+    "species" : "イソバテング", "size_out1": "10", "size_out2": "4", "size_in": "80", "pic": "gazou/iso.png", "time": "4000","size_mean": "20","size_sd": "2.5"
   },
   {
-    "species" : "シワイカナゴ", "size_out1": "6", "size_out2": "4", "size_in": "80", "pic": "gazou/ikana.png", "time": "3000"
+    "species" : "シワイカナゴ", "size_out1": "6", "size_out2": "4", "size_in": "75", "pic": "gazou/ikana.png", "time": "3000","size_mean": "8.5", "size_sd": "0.75"
   },
   {
-    "species" : "スズメダイ", "size_out1": "3", "size_out2": "3", "size_in": "90", "pic": "gazou/suzu.png", "time": "2000"
+    "species" : "ダンゴウオ", "size_out1": "3", "size_out2": "3", "size_in": "80", "pic": "gazou/favi.png", "time": "3000","size_mean": "4", "size_sd": "0.5"
   },
   {
-    "species" : "ダンゴウオ", "size_out1": "3", "size_out2": "3", "size_in": "90", "pic": "gazou/favi.png", "time": "2000"
+    "species" : "スズメダイ", "size_out1": "3", "size_out2": "3", "size_in": "90", "pic": "gazou/suzu.png", "time": "2000","size_mean": "6.5", "size_sd": "1.75"
   }
 ]
 
-function appearfish(catch_records, counts, ap_species, appear_fish){
+// 魚出現関数
+function appearfish(catch_records, counts, ap_species, ap_fish){
   // 魚種選択
-  var id = Math.floor( Math.random() * 10 );
+  // var id = Math.floor( Math.random() * ap_species.length );
+  var id = 4;
 
   // div取得（基準位置）
   var div_apfish = document.getElementById('div_apfish');
@@ -127,7 +181,6 @@ function appearfish(catch_records, counts, ap_species, appear_fish){
   size_out1 = ap_species[id].size_out1;
   size_out2 = ap_species[id].size_out2;
   size_apfish = parseInt(size_out1) + parseInt(size_out2);  //魚の全領域サイズ
-  // console.log(size_apfish);
   div_apfish_ind.style.width = `${size_apfish}%`;
   div_apfish_ind.style.paddingTop = `${size_apfish}%`;
   div_apfish.appendChild(div_apfish_ind);
@@ -137,7 +190,7 @@ function appearfish(catch_records, counts, ap_species, appear_fish){
   fishclass = "btn div_apfish_out";
   div_apfish_out.className = fishclass;
   div_apfish_out.onclick=function(){
-    catch_fish(div_apfish_ind, catch_records, appear_fish);
+    catch_fish(div_apfish_ind, catch_records, ap_species, ap_fish);
   };
   div_apfish_ind.appendChild(div_apfish_out);
 
@@ -181,7 +234,7 @@ function appearfish(catch_records, counts, ap_species, appear_fish){
   div_apfish_out.style.top = y;
 
   // 出現した魚のリスト作成
-  appear_fish.push({id: `ind${counts}`, species: ap_species[id].species, size: size_apfish});
+  ap_fish.push({id: `ind${counts}`, species: ap_species[id].species});
 
   // 数秒後に消える
   setTimeout(function(){
@@ -190,10 +243,10 @@ function appearfish(catch_records, counts, ap_species, appear_fish){
 }
 
 // 漁獲関数
-function catch_fish(div_apfish_ind, catch_records, appear_fish){
+function catch_fish(div_apfish_ind, catch_records, ap_species, ap_fish){
   var id = div_apfish_ind.id;
-  var fish = appear_fish.find((v) => v.id === id);
-  add_records(catch_records, fish.species, fish.size)
+  var fish = ap_fish.find((v) => v.id === id);
+  add_records1(catch_records, fish.species, ap_species);
   div_apfish_ind.remove();
 }
 
@@ -204,22 +257,46 @@ function avoid_fish(div_apfish_ind){
 }
 
 
-function add_records(catch_records, species_name, size_mean) {
-  // 種類
-  var species = species_name
-  
+function add_records1(catch_records, species, ap_species) {
+  // 魚類
+  var species = species;
+
   // サイズ
-  var r = rnorm()
-  var mean = size_mean
-  var sd = 5
-  var size = mean + r * sd
- 
-  // 記録として配列に格納
-  catch_records.push({species: species, size: Math.floor(size)});
+  var fish = ap_species.find((v) => v.species === species);
+  var mean = parseInt(fish.size_mean);
+  var sd = parseInt(fish.size_sd);
+
+  // 配列に追加
+  if(species == "エゾメバル"){
+    for (let i = 0; i < 10; i++) {
+      var rand = Math.random() * 101;
+      if(rand <= 30){
+        mean += 10
+        add_records2(catch_records, species, mean, sd)
+        mean -= 10
+      }else{add_records2(catch_records, species, mean, sd)
+      };  
+    };
+  }else{
+    add_records2(catch_records, species, mean, sd)
+  };
+
+  // 漁獲日数更新
   var num = document.getElementById('num');
   num.innerHTML = catch_records.length;
 }
 
+function add_records2(catch_records, species, mean, sd){
+  // サイズ決定
+  var size = mean + rnorm() * sd
+  // 配列に格納
+  catch_records.push({species: species, size: Math.floor(size *100)/100});
+}
+
+// 正規乱数作成
+function rnorm(){
+  return Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(2 * Math.PI * Math.random());
+}
 
 // click media
 // mediaElem.addEventListener('click',function(){
@@ -336,9 +413,4 @@ pauseBtn.addEventListener('click',function(){
 function change_btn(btn_id){
   btn_id.classList.toggle("btn1")
   btn_id.classList.toggle("btn2")
-}
-
-// 標準正規乱数
-function rnorm(){
-  return Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(2 * Math.PI * Math.random());
 }
