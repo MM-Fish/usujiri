@@ -25,33 +25,47 @@
           <source src="gazou/test.MP4">
           </video>
       </div>
-      <div id="turi">
-        <h2>ゲームを開始！ Let's start game!</h2>
-        <div id="game1">
+      <div id="game1">
+        <h2>ゲーム１. エゾメバル資源調査</h2>
+        <div class="index_game">
           <video class="in_media">
             <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
             <source src="gazou/test.MP4">
           </video>
-          <span class="to_area link" id="to_area1">エリア１</span>
+          <span class="to_area link" id="to_area1">ゲーム１を始める</span>
         </div>
-        <div id="game2">
-          <video class="in_media">
-            <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
-            <source src="gazou/test.MP4">
-          </video>
-          <span class="to_area link" id="to_area2">エリア２</span>
+        <div id="index_result1" class="index_result">
+          <div class="div_records">
+            <div class="divul_records">
+              <p>釣果 your records!</p>
+              <ul id="li_records1"></ul>
+            </div>
+          </div>
+          <div class="div_chart">
+            <canvas id="chart1"></canvas>
+          </div>
         </div>
       </div>
-      <div id="your_tyouka">
-        <h2>釣果 your records!</h2>
-        <div id="result_summary">
-          <div id="div_records">
-            <div id="divul_records"><ul id="li_records"></ul></div>
-          </div>
-          <div id="div_hist_chart">
-          <canvas id="hist_chart"></canvas>
-          </div>
+      <div id="game2">
+        <h2>ゲーム２. 臼尻の多様性調査</h2>
+        <div class="index_game">
+          <video class="in_media">
+            <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
+            <source src="gazou/test.MP4">
+          </video>
+          <span class="to_area link" id="to_area2">ゲーム２を始める</span>
         </div>
+        <div id="index_result2" class="index_result">
+          <div class="div_records">
+            <div class="divul_records">
+              <p>釣果 your records!</p>
+              <ul id="li_records2"></ul>
+            </div>
+          </div>
+          <div class="div_chart">
+            <canvas id="chart2"></canvas>
+          </div>
+        </div>  
       </div>
       <div id="usujiri_info">
         <h2>臼尻の研究について興味のある方へ</h2>
@@ -62,45 +76,78 @@
   </section>
 
   <section class="game" id=area1>
-    <video id="media" preload="metadata">
+    <video class="media" id="media1" preload="metadata">
       <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
       <source src="gazou/test.MP4">
     </video>
-    <div id="div_apfish">
-      <!-- <div class="div_apfish_ind" id="ind1"> -->
-        <!-- <div class = "btn div_apfish_out"></div> -->
-      <!-- </div> -->
+    <div class="div_apfish", id="div_apfish1">
     </div>
-    <div id="game_finish">
-      <!--ゲーム終了画面を表示するためのdiv要素--> 
+    <div class="game_finish", id="game_finish1">
       <div>
-        <ul id="all_records">
+        <ul class="game_result">
           <li>最終スコア</li>
-          <li><span id = tyouka>合計: 0尾</span></li>
-          <li><span id="to_index" class="link">ホームに戻る</span></li>
+          <li><span id="tyouka1">合計: 0尾</span></li>
+          <li><span id="to_index1" class="link">ホームに戻る</span></li>
         </ul>
       </div>
     </div>
-    <div id="status">
-      <span id = 'sec'>20</span>S&nbsp;&nbsp;
-      <span id = 'num'>0</span>匹
+    <div class="status">
+      <span id='sec1'>20</span>S&nbsp;&nbsp;
+      <span id='num1'>0</span>匹
     </div>
-    <div id="getfish">
-      <!--釣れた時のアイコンを表示するためのdiv要素--> 
-    </div>
+    <!-- <div id="getfish">
+      釣れた時のアイコンを表示するためのdiv要素 
+    </div> -->
     <div class="button">
-      <div id="btn_play" class = "btn btnp btn1">
+      <div id="btn_play1" class = "btn_play circle btnp btn1">
         <div class="btn_text">Play</div>
       </div>
-      <div id="btn_pause" class = "btn btnp btn2">
+      <div id="btn_pause1" class = "btn_pause circle btnp btn2">
         <div class="btn_text">Pause</div>
       </div>
-      <div id="btn_try" class = "btn btnp btn1">
+      <!-- <div id="btn_try1" class = "btn_try circle btnp btn1">
         <div class="btn_text">Try</div>
-      </div>
+      </div> -->
     </div>
 </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-  <script src="main.js"></script>
+
+<section class="game" id=area2>
+  <video class="media" id="media2" preload="metadata">
+    <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
+    <source src="gazou/test.MP4">
+  </video>
+  <div class="div_apfish", id="div_apfish2">
+  </div>
+  <div class="game_finish", id="game_finish2">
+    <div>
+      <ul class="game_result">
+        <li>最終スコア</li>
+        <li><span id="tyouka2">合計: 0尾</span></li>
+        <li><span id="to_index2" class="link">ホームに戻る</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="status">
+    <span id='sec2'>20</span>S&nbsp;&nbsp;
+    <span id='num2'>0</span>匹
+  </div>
+  <!-- <div id="getfish">
+    釣れた時のアイコンを表示するためのdiv要素 
+  </div> -->
+  <div class="button">
+    <div id="btn_play2" class = "btn_play circle btnp btn1">
+      <div class="btn_text">Play</div>
+    </div>
+    <div id="btn_pause2" class = "btn_pause circle btnp btn2">
+      <div class="btn_text">Pause</div>
+    </div>
+    <!-- <div id="btn_try2" class = "btn_try circle btnp btn1">
+      <div class="btn_text">Try</div>
+    </div> -->
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
