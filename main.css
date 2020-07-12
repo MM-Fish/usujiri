@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+/* 全体用CSS */
 body{
-  font-family:Verdana,Arial;
+  font-family: 'Noto Sans JP', sans-serif;
   font-size:2vw;
   background-color: rgba(230, 240, 240);
 }
@@ -18,57 +21,97 @@ ul {
   padding: 0px;
 }
 
-/* index用CSS */
+/* index */
 #index{
   text-align: center;
 }
 
 #header{
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.div_header_1{
   position: relative;
-  top: 0;
-  margin-bottom:2%;
-  background-color: royalblue;
-  padding-top: 50%;
   width: 100%;
+  height: 50vw;
+  background-size: cover;
 }
 
 #usujiri{
   position: absolute;
-  top: 1%;
-  left: 2%;
+  top: 3%;
+  left: 3%;
   z-index: 2;
 }
 
 #usujiri a{
   color: white;
+  text-shadow:0.1vw 0.1vw 0.2vw rgb(68, 67, 67);
+  z-index: 2;
 }
 
 #header h1{
   position: absolute;
-  font-size:bold;
   font-size: 4.5vw;
-  top:50%;
+  font-weight: bold;
+  text-shadow:0.2vw 0.2vw 0.4vw rgb(68, 67, 67);
+  top:30%;
   left: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
   transform: translateX(-50%);
   color: white;
+  z-index: 2;
+}
+
+#header span{
+  position: absolute;
+  font-size: 1.5vw;
+  font-weight: bold;
+  text-shadow:0.1vw 0.1vw 0.2vw rgb(68, 67, 67);
+  top:50%;
+  left: 50%;
+  transform: translateY(-40%);
+  transform: translateX(-50%);
+  color: white;
+  z-index: 2;
 }
 
 #footer{
   font-size:1vw;
   text-align:center;
+  margin-top: 5%;
   border-top:1px solid #ccc;
   padding:10px 0 20px;
 }
 
 #tutorial,#game1, #game2, #usujiri_info{
-  margin-bottom:5%;
+  margin-top:5%;
 }
 
 #index h2{
   font-size:3vw;
+  text-shadow:0.1vw 0.1vw 0.1vw rgb(68, 67, 67);
 }
 
+/* tutorial */
+.tutorial_gazou_1{
+  position: relative;
+  width: 80%;
+  height: 45vw;
+  border-radius: 10%;
+  overflow: hidden;
+  margin: auto;
+}
+
+.tutorial_gazou_2{
+  width: 100%;
+  height: 45vw;
+  background-size: cover;
+  margin: auto;
+}
+
+
+/* index,game */
 .index_game{
   position: relative;
 }
@@ -82,15 +125,16 @@ ul {
 
 .to_area{
   position: absolute;
-  top:45%;
+  top:40%;
   left: 50%;
   transform: translateX(-50%);
   color:white;
   font-weight: bold;
   font-size: 3vw;
+  text-shadow:0.1vw 0.1vw 0.1vw rgb(68, 67, 67);
 }
 
-/* ヒストグラム用 */
+/* 結果とヒストグラム */
 .index_result{
   position: relative;
   margin: auto;
@@ -107,7 +151,7 @@ ul {
   color:white;
   background-color: rgb(42, 197, 235);
   width: 100%;
-  /* 漁獲を表示する枠の大きさ */
+  /* 漁獲した魚種を表示する枠の大きさ */
   padding-top: 20%;
   overflow: hidden;
 }
@@ -123,6 +167,7 @@ ul {
 .divul_records p{
   font-weight: bold;
   font-size: 3vw;
+  text-shadow:0.1vw 0.1vw 0.1vw rgb(68, 67, 67);
 }
 
 .divul_records li{
@@ -139,7 +184,36 @@ ul {
   margin-bottom: 1.5%;
 }
 
+.div_result_ainame{
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+  width: 50%;
+  z-index: 3;
+}
 
+.div_result_ainame_cmt{
+  position: absolute;
+  font-size: 1.2vw;
+  top: 3%;
+}
+
+#div_result_ainame_cmt1{
+  right: 43%;
+}
+
+#div_result_ainame_cmt2{
+  right: 42%;
+}
+
+.div_result_ainame_cmt span{
+  font-size: 1.2vw;
+  
+}
+
+.div_result_ainame_gazou{
+  width: 50%;
+}
 
 /* game用CSS */
 #area1, #area2{
@@ -157,8 +231,8 @@ ul {
 
 #game_finish1, #game_finish2{
   display: none;
-  top: 0;
   position: absolute;
+  top: 0;
   color: white;
   background-color: rgba(0, 0, 0, 0.50);
   width: 100%;
@@ -175,6 +249,7 @@ ul {
 }
 
 .status {
+  display: none;
   position: fixed;
   top: 3%;
   left: 3%;
@@ -187,7 +262,7 @@ ul {
   font-size: 4vw;
 }
 
-#getfish {
+/* #getfish {
   position: fixed;
   top: 10%;
   width: 80%;
@@ -211,7 +286,6 @@ ul {
   display: table-cell;
   font-size: 3vw;
   font-weight: bold;
-  color: rgb(229, 255, 0);
   width: 70%;
   vertical-align: middle;
   color: rgb(17, 224, 247);
@@ -222,14 +296,13 @@ ul {
   display: table-cell;
   width: 40%;
   padding-left: 50%;
-}
+} */
 
 /* 魚表示CSS */
 .div_apfish{
   position: absolute;
   right: 0%;
   bottom: 0%;
-  border-style: solid;
   width: 100%;
 }
 
@@ -240,8 +313,7 @@ ul {
 }
 
 .div_apfish_out{
-  background-image: linear-gradient(#cad1f5 0%, #6f98f0 100%);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  background-image: linear-gradient(rgb(204, 211, 245, 0.8) 0%, rgb(112, 152, 240, 0.8) 100%);
 }
 
 .div_apfish_in1{
@@ -249,8 +321,7 @@ ul {
 }
 
 .div_apfish_in2{
-  background-image: linear-gradient(#f5daca 0%, #f16d6d 100%);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  background-image: linear-gradient(rgb(245, 218, 202, 0.8) 0%, rgb(241, 109, 109, 0.8) 100%);
 }
 
 .div_apfishimg{
@@ -294,7 +365,7 @@ ul {
   position: absolute;
   display: inline-block;
   text-align: center;
-  top: 35%;
+  top: 30%;
   font-size: 2.5vw;
   width: 100%;
   z-index: 2;

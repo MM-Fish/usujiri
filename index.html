@@ -3,46 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ガヤ釣りエリア１</title>
+  <title>臼尻オンライン実習</title>
   <link rel="stylesheet" type="text/css" href="main.css">
   <link rel="shortcut icon" href="gazou/favi.png">
 </head>
 <body>
   <section id="index">
     <section id="header">
-      <div id="usujiri">
-        <a href="https://www.hokudai.ac.jp/fsc/usujiri/usujiri.html">
-          臼尻水産実験所
-        </a>
-      </div>
-    <h1>ガヤ釣り体験</h1>
+      <div class="div_header_1">
+          <div id="usujiri">
+            <a href="https://www.hokudai.ac.jp/fsc/usujiri/usujiri.html">
+              臼尻水産実験所
+            </a>
+          </div>
+          <h1>臼尻オンライン実習</h1>
+          <span>ゲーム感覚で臼尻の海や魚について知り，<br>「統計検定」「地点間での魚種の共有率推定」について学ぶ</span>
+       </div>
     </section>
     <section id="contents">
       <div id="tutorial">
-        <h2>遊び方 How to play</h2>
-        <video class="in_media">
-          <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
-          <source src="gazou/test.MP4">
-          </video>
+        <h2>ゲームの遊び方</h2>
+        <div class="tutorial_gazou_1">
+          <div class="tutorial_gazou_2"></div>
+        </div>
       </div>
       <div id="game1">
         <h2>ゲーム１. エゾメバル資源調査</h2>
         <div class="index_game">
           <video class="in_media">
             <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
-            <source src="gazou/test.MP4">
+            <source src="gazou/index_game1.mov">
           </video>
-          <span class="to_area link" id="to_area1">ゲーム１を始める</span>
+          <span class="to_area link" id="to_area1">ゲームを始める</span>
         </div>
         <div id="index_result1" class="index_result">
           <div class="div_records">
             <div class="divul_records">
-              <p>釣果 your records!</p>
+              <p>釣果</p>
               <ul id="li_records1"></ul>
             </div>
           </div>
           <div class="div_chart">
             <canvas id="chart1"></canvas>
+          </div>
+          <div class="div_result_ainame">
+            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt1">オスとメスで<br>体長差はある？<br><br><span>データダウンロード</span></div>
+            <img class="div_result_ainame_gazou" src="gazou/index_result.png">
           </div>
         </div>
       </div>
@@ -51,19 +57,23 @@
         <div class="index_game">
           <video class="in_media">
             <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
-            <source src="gazou/test.MP4">
+            <source src="gazou/index_game2.mov">
           </video>
-          <span class="to_area link" id="to_area2">ゲーム２を始める</span>
+          <span class="to_area link" id="to_area2">ゲームを始める</span>
         </div>
         <div id="index_result2" class="index_result">
           <div class="div_records">
             <div class="divul_records">
-              <p>釣果 your records!</p>
+              <p>釣果</p>
               <ul id="li_records2"></ul>
             </div>
           </div>
           <div class="div_chart">
             <canvas id="chart2"></canvas>
+          </div>
+          <div class="div_result_ainame">
+            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt2">各エリア間の採集種の<br>共有率はどのくらい？<br><br><span>データダウンロード</span></div>
+            <img class="div_result_ainame_gazou" src="gazou/index_result.png">
           </div>
         </div>  
       </div>
@@ -78,7 +88,7 @@
   <section class="game" id=area1>
     <video class="media" id="media1" preload="metadata">
       <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
-      <source src="gazou/test.MP4">
+      <source src="gazou/game1.mov">
     </video>
     <div class="div_apfish", id="div_apfish1">
     </div>
@@ -91,7 +101,7 @@
         </ul>
       </div>
     </div>
-    <div class="status">
+    <div class="status" id="status1">
       <span id='sec1'>20</span>S&nbsp;&nbsp;
       <span id='num1'>0</span>匹
     </div>
@@ -114,7 +124,7 @@
 <section class="game" id=area2>
   <video class="media" id="media2" preload="metadata">
     <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
-    <source src="gazou/test.MP4">
+    <source src="gazou/game2.mp4">
   </video>
   <div class="div_apfish", id="div_apfish2">
   </div>
@@ -127,7 +137,7 @@
       </ul>
     </div>
   </div>
-  <div class="status">
+  <div class="status" id="status2">
     <span id='sec2'>20</span>S&nbsp;&nbsp;
     <span id='num2'>0</span>匹
   </div>
@@ -148,6 +158,8 @@
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="jquery.bgswitcher.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
