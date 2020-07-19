@@ -26,7 +26,8 @@ ul {
   text-align: center;
 }
 
-#header{
+/* header */
+header{
   font-family: 'Noto Sans JP', sans-serif;
 }
 
@@ -35,6 +36,32 @@ ul {
   width: 100%;
   height: 50vw;
   background-size: cover;
+}
+
+header h1{
+  position: absolute;
+  font-size: 4.5vw;
+  font-weight: bold;
+  text-shadow:0.2vw 0.2vw 0.4vw rgb(68, 67, 67);
+  top:30%;
+  left: 50%;
+  transform: translateY(-40%);
+  transform: translateX(-50%);
+  color: white;
+  z-index: 2;
+}
+
+header span{
+  position: absolute;
+  font-size: 1.5vw;
+  font-weight: bold;
+  text-shadow:0.1vw 0.1vw 0.2vw rgb(68, 67, 67);
+  top:50%;
+  left: 50%;
+  transform: translateY(-40%);
+  transform: translateX(-50%);
+  color: white;
+  z-index: 2;
 }
 
 #usujiri{
@@ -50,38 +77,25 @@ ul {
   z-index: 2;
 }
 
-#header h1{
-  position: absolute;
-  font-size: 4.5vw;
-  font-weight: bold;
-  text-shadow:0.2vw 0.2vw 0.4vw rgb(68, 67, 67);
-  top:30%;
-  left: 50%;
-  transform: translateY(-40%);
-  transform: translateX(-50%);
-  color: white;
-  z-index: 2;
-}
-
-#header span{
-  position: absolute;
-  font-size: 1.5vw;
-  font-weight: bold;
-  text-shadow:0.1vw 0.1vw 0.2vw rgb(68, 67, 67);
-  top:50%;
-  left: 50%;
-  transform: translateY(-40%);
-  transform: translateX(-50%);
-  color: white;
-  z-index: 2;
-}
-
-#footer{
+/* footer */
+footer{
+  position: relative;
   font-size:1vw;
   text-align:center;
   margin-top: 5%;
   border-top:1px solid #ccc;
-  padding:10px 0 20px;
+  height: 5vw;
+}
+
+footer p{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2vw;
+  margin: auto;
+  font-size: 0.8vw;
 }
 
 #tutorial,#game1, #game2, #usujiri_info{
@@ -91,6 +105,7 @@ ul {
 #index h2{
   font-size:3vw;
   text-shadow:0.1vw 0.1vw 0.1vw rgb(68, 67, 67);
+  margin-bottom: 1%;
 }
 
 /* tutorial */
@@ -109,7 +124,6 @@ ul {
   background-size: cover;
   margin: auto;
 }
-
 
 /* index,game */
 .index_game{
@@ -154,6 +168,11 @@ ul {
   /* 漁獲した魚種を表示する枠の大きさ */
   padding-top: 20%;
   overflow: hidden;
+  z-index: 4;
+}
+
+.div_records:hover{
+  padding-top: 200%;
 }
 
 .divul_records{
@@ -182,6 +201,7 @@ ul {
   width: 90%;
   margin: 0 auto;
   margin-bottom: 1.5%;
+  z-index: 5;
 }
 
 .div_result_ainame{
@@ -189,31 +209,41 @@ ul {
   bottom: 0;
   right: -10%;
   width: 50%;
-  z-index: 3;
-}
-
-.div_result_ainame_cmt{
-  position: absolute;
-  font-size: 1.2vw;
-  top: 3%;
-}
-
-#div_result_ainame_cmt1{
-  right: 43%;
-}
-
-#div_result_ainame_cmt2{
-  right: 42%;
-}
-
-.div_result_ainame_cmt span{
-  font-size: 1.2vw;
-  
 }
 
 .div_result_ainame_gazou{
   width: 50%;
 }
+
+.div_result_ainame_cmt{
+  position: absolute;
+  font-size: 1.2vw;
+  top: 2%;
+}
+
+#div_result_ainame_cmt1{
+  right: 41%;
+}
+
+#div_result_ainame_cmt2{
+  right: 41%;
+}
+
+.div_result_ainame_cmt a{
+  font-size: 1.2vw;
+}
+
+.div_result_ainame_cmt p{
+  margin-top: 2%;  
+  margin-bottom: 4%;  
+}
+
+.kadai{
+  font-size: 1.4vw;
+  font-weight: bold;
+  text-shadow:0.2vw 0.2vw 0.4vw rgb(168, 167, 167);
+}
+
 
 /* game用CSS */
 #area1, #area2{
@@ -262,41 +292,6 @@ ul {
   font-size: 4vw;
 }
 
-/* #getfish {
-  position: fixed;
-  top: 10%;
-  width: 80%;
-  left: 10%;
-  z-index: 2;
-}
-
-
-.getfish1 {
-  display: table;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  width: 80%;
-  margin: auto;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-.getfish1 span{
-  display: table-cell;
-  font-size: 3vw;
-  font-weight: bold;
-  width: 70%;
-  vertical-align: middle;
-  color: rgb(17, 224, 247);
-  color: rgb(34, 81, 192);
-}
-
-.fishgazou {
-  display: table-cell;
-  width: 40%;
-  padding-left: 50%;
-} */
 
 /* 魚表示CSS */
 .div_apfish{

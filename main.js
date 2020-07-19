@@ -19,10 +19,10 @@ var ap_fish1 = [
     "species" : "エゾメバル1", "size_out1": "10", "size_out2": "2", "size_in": "60", "pic": "gazou/mazo.png", "time": "5000","size_mean": "15","size_sd": "2"
   },
   {
-    "species" : "エゾメバル2", "size_out1": "11", "size_out2": "2", "size_in": "75", "pic": "gazou/mazo2.png", "time": "4000","size_mean": "15","size_sd": "2"
+    "species" : "エゾメバル2", "size_out1": "11", "size_out2": "2", "size_in": "75", "pic": "gazou/mazo2.png", "time": "3000","size_mean": "15","size_sd": "2"
   },
   {
-    "species" : "エゾメバル3", "size_out1": "13", "size_out2": "3", "size_in": "85", "pic": "gazou/mazo3.png", "time": "3000","size_mean": "15","size_sd": "2"
+    "species" : "エゾメバル3", "size_out1": "13", "size_out2": "3", "size_in": "85", "pic": "gazou/mazo3.png", "time": "2000","size_mean": "15","size_sd": "2"
   }
 ]
 var ap_fish2 = [
@@ -144,7 +144,7 @@ mediaElem2.addEventListener('timeupdate',function(){
 
 
 // 関数
-// ゲームのメイン関数（魚の出現，記録）
+// ゲームのメイン関数
 function game_main(mediaElem, catch_records, hist_range, x0, counts, ap_fish, ap_record, game_id){
   var currentTime = mediaElem.currentTime
   // ゲーム開始後（3秒後から）実行される関数
@@ -156,7 +156,12 @@ function game_main(mediaElem, catch_records, hist_range, x0, counts, ap_fish, ap
     var playTimeDisplay = Math.round(playTime);
     playTimeBox.innerHTML = playTimeDisplay;
     var appearance = Math.floor( Math.random() * 101 );
-    if(appearance <= 30){
+    if(game_id==1){
+      var prob = 25;
+    }else{
+      var prob = 35;
+    }
+    if(appearance <= prob){
       appearfish(catch_records, counts, ap_fish, ap_record, game_id, currentTime);
     }
   }
@@ -201,8 +206,8 @@ function game_main(mediaElem, catch_records, hist_range, x0, counts, ap_fish, ap
 // ヒストグラム作成関数(釣果，x軸幅，x軸最小値，グラフ入力要素)
 function make_hist(catch_records, hist_range, x0, histElem){
   // 参照渡し
-  var gayas_osu = catch_records.filter(v => v.sex === 0);
-  var gayas_mesu = catch_records.filter(v => v.sex === 1);
+  var gayas_osu = catch_records.filter(v => v.sex === '雄');
+  var gayas_mesu = catch_records.filter(v => v.sex === '雌');
   //値渡し
   gayas_osu = JSON.stringify(gayas_osu);
   gayas_osu = JSON.parse(gayas_osu);
@@ -244,7 +249,7 @@ function make_hist_chart(hist_data_osu, hist_data_mesu, hist_range, x0, histElem
     options: {
       title: {
         display: true,
-        text: 'エゾメバル体長別釣果'
+        text: 'エゾメバル体長別釣果',
       },
       scales: {
         yAxes: [{
@@ -326,6 +331,57 @@ function make_bar_chart(bar_data, barElem){
 }
 
 
+// CSV保存
+// 配列をcsvで保存するfunction
+var download1 = document.getElementById("data_download1");
+download1.addEventListener('click',function(e){
+  exportCSV(e.target, catch_records1);
+});
+
+var download2 = document.getElementById("data_download2");
+download2.addEventListener('click',function(e){
+  exportCSV(e.target, catch_records2);
+});
+
+function exportCSV(link, content){
+  if(link.id == 'data_download1'){
+    var csv_data = "魚種,サイズ,性別" + "\r\n";
+    var csv_name = "game1.csv";
+      content.forEach(v => {
+      var row = `${v.species},${v.size},${v.sex}`;
+      csv_data += row + "\r\n";  
+    });
+  }else if(link.id == 'data_download2'){
+    var csv_data = "魚種,サイズ,エリア" + "\r\n";
+    var csv_name = "game2.csv";
+    content.forEach(v => {
+      if(v.time <= 23){
+        var area = '1';
+      }else if(v.time > 23 & v.time <=43){
+        var area = '2';
+      }else if(v.time > 43){
+        var area = '3';
+      }
+      var row = `${v.species},${v.size},${area}`;
+      csv_data += row + "\r\n";
+    });
+  }
+  let bom  = new Uint8Array([0xEF, 0xBB, 0xBF]);
+  let blob = new Blob([bom, csv_data], {type: 'text/csv'});
+  link.setAttribute('download', csv_name);
+
+  if (window.navigator.msSaveOrOpenBlob) {
+    // for ie
+    window.navigator.msSaveOrOpenBlob(blob, csv_name);
+  } else if (window.webkitURL && window.webkitURL.createObjectURL) {
+    // for chrome (and safari)
+    link.setAttribute('href', window.webkitURL.createObjectURL(blob));
+  } else if (window.URL && window.URL.createObjectURL) {
+    // for firefox
+    link.setAttribute('href', window.URL.createObjectURL(blob));
+  }
+}
+
 // 魚出現関数
 function appearfish(catch_records, counts, ap_fish, ap_record, game_id, currentTime){
   // 魚種選択
@@ -349,7 +405,14 @@ function appearfish(catch_records, counts, ap_fish, ap_record, game_id, currentT
       var id = ap_fish_area[Math.floor( Math.random() * ap_fish_area.length)];
     }
   }else{
-    var id = Math.floor( Math.random() * ap_fish.length );
+    var game1_ranodom = Math.floor(Math.random() * 10);
+    if(game1_ranodom <= 0){
+      var id = 2;
+    }else if(game1_ranodom > 0 & game1_ranodom <= 4){
+      var id = 1;
+    }else{
+      var id = 0;
+    }
   }
 
   // div取得（基準位置）
@@ -437,14 +500,14 @@ function add_records_1(catch_records, species, ap_fish, game_id, currentTime) {
   var fish = ap_fish.find((v) => v.species === species);
   var mean = parseInt(fish.size_mean);
   var sd = parseInt(fish.size_sd);
-  var sex = 0
+  var sex = '雄'
   // 配列に追加
   if(game_id == 1){
     var counts = species.replace(/[^0-9]/g, '');
     for (let i = 0; i < counts; i++) {
       var rand = Math.random() * 101;
       if(rand <= 50){
-        var sex = 1
+        var sex = '雌'
         mean += 3
         add_records_2(catch_records, "エゾメバル", mean, sd, game_id, currentTime, sex)
         mean -= 3
@@ -474,7 +537,6 @@ function add_records_2(catch_records, species, mean, sd, game_id, currentTime, s
 function rnorm(){
   return Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(2 * Math.PI * Math.random());
 }
-
 
 // ボタン
 // play btn
@@ -517,38 +579,3 @@ function change_btn(btn_id){
   btn_id.classList.toggle("btn1")
   btn_id.classList.toggle("btn2")
 }
-
-
-// function getfish(catch_records, species_name, size_mean, size_sd) {
-//   // 種類
-//   var species = species_name
-  
-//   // サイズ
-//   var r = rnorm()
-//   var mean = size_mean
-//   var sd = size_sd
-//   var size = mean + r * sd
- 
-//   // 要素作成
-//   var div_getfish1 = document.createElement('div');
-//   div_getfish1.className = "getfish1"
-
-//   // 画像
-//   var fishgazou = document.createElement('img');
-//   fishgazou.className = 'fishgazou';
-//   fishgazou.src = "https://drive.google.com/uc?export=view&id=1eeB_F_NANaBbvmnw5AoWIgmtCMCy4t1G";
-//   div_getfish1.appendChild(fishgazou);
-  
-//   // テキスト
-//   var fishtext = document.createElement('span');
-//   fishtext.textContent=`Get! ${species}(${Math.floor(size)}cm)`;
-//   div_getfish1.appendChild(fishtext);
-
-//   // リスト取得と要素追加
-//   var div_getfish = document.getElementById('getfish')
-//   div_getfish.appendChild(div_getfish1);
-
-//   // 1秒後に消える
-//   setTimeout(function(){
-//     div_getfish.textContent = null;
-//   }, 500)

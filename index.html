@@ -9,7 +9,7 @@
 </head>
 <body>
   <section id="index">
-    <section id="header">
+    <header>
       <div class="div_header_1">
           <div id="usujiri">
             <a href="https://www.hokudai.ac.jp/fsc/usujiri/usujiri.html">
@@ -19,7 +19,7 @@
           <h1>臼尻オンライン実習</h1>
           <span>ゲーム感覚で臼尻の海や魚について知り，<br>「統計検定」「地点間での魚種の共有率推定」について学ぶ</span>
        </div>
-    </section>
+    </header>
     <section id="contents">
       <div id="tutorial">
         <h2>ゲームの遊び方</h2>
@@ -31,7 +31,6 @@
         <h2>ゲーム１. エゾメバル資源調査</h2>
         <div class="index_game">
           <video class="in_media">
-            <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
             <source src="gazou/index_game1.mov">
           </video>
           <span class="to_area link" id="to_area1">ゲームを始める</span>
@@ -47,7 +46,7 @@
             <canvas id="chart1"></canvas>
           </div>
           <div class="div_result_ainame">
-            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt1">オスとメスで<br>体長差はある？<br><br><span>データダウンロード</span></div>
+            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt1"><p class="kadai">課題1</p><p>エゾメバルの雄と雌の<br>体長に有意差はある？</p><p><a class="data_download link" id="data_download1">データ取得</a>&<a class="ref link" id="ref1" href="https://www.hokudai.ac.jp/fsc/usujiri/usujiri.html">参考リンク</a></p></div>
             <img class="div_result_ainame_gazou" src="gazou/index_result.png">
           </div>
         </div>
@@ -56,7 +55,6 @@
         <h2>ゲーム２. 臼尻の多様性調査</h2>
         <div class="index_game">
           <video class="in_media">
-            <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
             <source src="gazou/index_game2.mov">
           </video>
           <span class="to_area link" id="to_area2">ゲームを始める</span>
@@ -72,22 +70,25 @@
             <canvas id="chart2"></canvas>
           </div>
           <div class="div_result_ainame">
-            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt2">各エリア間の採集種の<br>共有率はどのくらい？<br><br><span>データダウンロード</span></div>
+            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt2"><p class="kadai">課題2</p><p>各エリア間の採集種の<br>共有率はどのくらい？</p><p><a class="data_download link" id="data_download2">データ取得</a>&<a class="ref link" id="ref2" href="https://www.hokudai.ac.jp/fsc/usujiri/usujiri.html">参考リンク</a></p></div>
             <img class="div_result_ainame_gazou" src="gazou/index_result.png">
           </div>
         </div>  
       </div>
       <div id="usujiri_info">
         <h2>臼尻の研究について興味のある方へ</h2>
+        <a href="https://www.hokudai.ac.jp/fsc/usujiri/usujiri.html">
+          臼尻水産実験所ホームページ
+        </a>
       </div>
     </section>
-    <section id="footer">
-    </section>
+    <footer>
+      <p class="copyright">&copy; 北海道大学 北方生物圏フィールド科学センター 臼尻水産実験所 Usujiri Fisheries Station</p>
+    </footer>
   </section>
 
   <section class="game" id=area1>
     <video class="media" id="media1" preload="metadata">
-      <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
       <source src="gazou/game1.mov">
     </video>
     <div class="div_apfish", id="div_apfish1">
@@ -105,9 +106,6 @@
       <span id='sec1'>20</span>S&nbsp;&nbsp;
       <span id='num1'>0</span>匹
     </div>
-    <!-- <div id="getfish">
-      釣れた時のアイコンを表示するためのdiv要素 
-    </div> -->
     <div class="button">
       <div id="btn_play1" class = "btn_play circle btnp btn1">
         <div class="btn_text">Play</div>
@@ -115,15 +113,11 @@
       <div id="btn_pause1" class = "btn_pause circle btnp btn2">
         <div class="btn_text">Pause</div>
       </div>
-      <!-- <div id="btn_try1" class = "btn_try circle btnp btn1">
-        <div class="btn_text">Try</div>
-      </div> -->
     </div>
 </section>
 
 <section class="game" id=area2>
   <video class="media" id="media2" preload="metadata">
-    <!-- <source controls="controls" src="https://drive.google.com/uc?authuser=0&id=1U_PhoqoefN3RNQ27FNBP5HBPhQ887ieJ&export=download"> -->
     <source src="gazou/game2.mp4">
   </video>
   <div class="div_apfish", id="div_apfish2">
@@ -141,9 +135,6 @@
     <span id='sec2'>20</span>S&nbsp;&nbsp;
     <span id='num2'>0</span>匹
   </div>
-  <!-- <div id="getfish">
-    釣れた時のアイコンを表示するためのdiv要素 
-  </div> -->
   <div class="button">
     <div id="btn_play2" class = "btn_play circle btnp btn1">
       <div class="btn_text">Play</div>
@@ -151,9 +142,6 @@
     <div id="btn_pause2" class = "btn_pause circle btnp btn2">
       <div class="btn_text">Pause</div>
     </div>
-    <!-- <div id="btn_try2" class = "btn_try circle btnp btn1">
-      <div class="btn_text">Try</div>
-    </div> -->
   </div>
 </section>
 
