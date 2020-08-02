@@ -98,7 +98,7 @@ footer p{
   font-size: 0.8vw;
 }
 
-#tutorial,#game1, #game2, #usujiri_info{
+#tutorial,#game1, #game2, #usujiri_info, #hajimeni{
   margin-top:5%;
 }
 
@@ -107,6 +107,63 @@ footer p{
   text-shadow:0.1vw 0.1vw 0.1vw rgb(68, 67, 67);
   margin-bottom: 1%;
 }
+
+/* hajimeni */
+.hajimeni{
+  position: relative;
+  margin: auto;
+  background-image: url('gazou/index_hajimeni1.jpg');
+  background-size:  cover;
+  width: 80%;
+  height: 30vw;
+  padding-top: 17%;
+  border-radius: 10%;
+  overflow: hidden;
+}
+
+.mokuteki{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 30vw;
+  font-size: 2vw;
+  font-weight: bold;
+  color: white;
+  text-shadow:0.1vw 0.1vw 0.1vw rgb(68, 67, 67);
+} 
+
+.hajimeni h3{
+  text-shadow:0.1vw 0.1vw 0.1vw rgb(68, 67, 67);
+  margin-bottom: 0.5%;
+  font-size: 2.5vw;
+}
+
+.mokuteki ul{
+  list-style: decimal;
+  padding-left: 5%;
+  text-align: left;
+  margin-top: 2.5%;
+}
+
+.mokuteki li{
+  margin-top: 2%;
+}
+
+#nerai{
+  top: 5%;
+}
+
+#mokuhyou{
+  top: 55%;
+}
+
+#mokuhyou p{
+  margin-top: 2.5%;
+  text-align: left;
+  padding-left: 4%;
+}
+
 
 /* tutorial */
 .tutorial_gazou_1{

@@ -16,13 +16,13 @@ var counts2 = 0;
 // 魚種
 var ap_fish1 = [
   {
-    "species" : "エゾメバル1", "size_out1": "10", "size_out2": "2", "size_in": "60", "pic": "gazou/mazo.png", "time": "5000","size_mean": "15","size_sd": "2"
+    "species" : "エゾメバル1", "size_out1": "10", "size_out2": "2", "size_in": "60", "pic": "gazou/mazo.png", "time": "5000","size_mean": "12","size_sd": "2"
   },
   {
-    "species" : "エゾメバル2", "size_out1": "11", "size_out2": "2", "size_in": "75", "pic": "gazou/mazo2.png", "time": "3000","size_mean": "15","size_sd": "2"
+    "species" : "エゾメバル2", "size_out1": "11", "size_out2": "2", "size_in": "75", "pic": "gazou/mazo2.png", "time": "3000","size_mean": "12","size_sd": "2"
   },
   {
-    "species" : "エゾメバル3", "size_out1": "13", "size_out2": "3", "size_in": "85", "pic": "gazou/mazo3.png", "time": "2000","size_mean": "15","size_sd": "2"
+    "species" : "エゾメバル3", "size_out1": "13", "size_out2": "3", "size_in": "85", "pic": "gazou/mazo3.png", "time": "2000","size_mean": "12","size_sd": "2"
   }
 ]
 var ap_fish2 = [
@@ -30,31 +30,37 @@ var ap_fish2 = [
     "species" : "エゾメバル", "size_out1": "10", "size_out2": "4", "size_in": "60", "pic": "gazou/mazo.png", "time": "5000","size_mean": "15","size_sd": "3"
   },
   {
-    "species" : "オニカジカ", "size_out1": "10", "size_out2": "4", "size_in": "75", "pic": "gazou/oni.png", "time": "4000","size_mean": "20","size_sd": "2.5"
+    "species" : "オニカジカ", "size_out1": "10", "size_out2": "4", "size_in": "85", "pic": "gazou/oni.png", "time": "4000","size_mean": "20","size_sd": "2.5"
   },
   {
     "species" : "イソバテング", "size_out1": "10", "size_out2": "3", "size_in": "80", "pic": "gazou/iso.png", "time": "4000","size_mean": "20","size_sd": "2.5"
   },
   {
-    "species" : "ゴッコ", "size_out1": "10", "size_out2": "3", "size_in": "75", "pic": "gazou/gok.png", "time": "4000","size_mean": "27.5","size_sd": "6.125"
+    "species" : "ゴッコ", "size_out1": "10", "size_out2": "3", "size_in": "75", "pic": "gazou/gok.png", "time": "3500","size_mean": "27.5","size_sd": "6.125"
   },
   {
-    "species" : "アイナメ", "size_out1": "13", "size_out2": "3", "size_in": "75", "pic": "gazou/aina.png", "time": "3000","size_mean": "35","size_sd": "10"
+    "species" : "アイナメ", "size_out1": "13", "size_out2": "3", "size_in": "75", "pic": "gazou/aina.png", "time": "3500","size_mean": "35","size_sd": "10"
   },
   {
-    "species" : "シワイカナゴ", "size_out1": "6", "size_out2": "3", "size_in": "75", "pic": "gazou/ikana.png", "time": "3000","size_mean": "8.5", "size_sd": "0.75"
+    "species" : "シワイカナゴ", "size_out1": "6", "size_out2": "3", "size_in": "75", "pic": "gazou/ikana.png", "time": "3500","size_mean": "8.5", "size_sd": "0.75"
   },
   {
-    "species" : "ヒラメ", "size_out1": "15", "size_out2": "4", "size_in": "90", "pic": "gazou/hira.png", "time": "3000","size_mean": "45","size_sd": "10"
+    "species" : "ツマグロカジカ", "size_out1": "7", "size_out2": "3", "size_in": "75", "pic": "gazou/tsuma.png", "time": "3000","size_mean": "10", "size_sd": "2"
   },
   {
-    "species" : "ダンゴウオ", "size_out1": "3", "size_out2": "2", "size_in": "75", "pic": "gazou/favi.png", "time": "3000","size_mean": "4", "size_sd": "0.5"
+    "species" : "ヒラメ", "size_out1": "15", "size_out2": "4", "size_in": "85", "pic": "gazou/hira.png", "time": "1500","size_mean": "45","size_sd": "10"
   },
   {
-    "species" : "ミズダコ", "size_out1": "18", "size_out2": "4", "size_in": "95", "pic": "gazou/mizu.png", "time": "2500", "size_mean": "15","size_sd": "5"
+    "species" : "クチバシカジカ", "size_out1": "5", "size_out2": "3", "size_in": "65", "pic": "gazou/kuchi.png", "time": "1500","size_mean": "6", "size_sd": "1"
   },
   {
-    "species" : "スズメダイ", "size_out1": "3", "size_out2": "2", "size_in": "90", "pic": "gazou/suzu.png", "time": "2000","size_mean": "6.5", "size_sd": "1.75"
+    "species" : "ダンゴウオ", "size_out1": "3", "size_out2": "2", "size_in": "70", "pic": "gazou/dango.png", "time": "3000","size_mean": "4", "size_sd": "0.5"
+  },
+  {
+    "species" : "ミズダコ", "size_out1": "18", "size_out2": "4", "size_in": "90", "pic": "gazou/mizu.png", "time": "2500", "size_mean": "15","size_sd": "5"
+  },
+  {
+    "species" : "スズメダイ", "size_out1": "3", "size_out2": "2", "size_in": "85", "pic": "gazou/suzu.png", "time": "2000","size_mean": "6.5", "size_sd": "1.75"
   }
 ]
 // headerスライドショー
@@ -387,21 +393,21 @@ function appearfish(catch_records, counts, ap_fish, ap_record, game_id, currentT
   // 魚種選択
   if(game_id==2){
     if(currentTime<=22.5){
-      ap_fish_area = [0,1,4];
+      ap_fish_area = [0,1,4,11];
       var id = ap_fish_area[Math.floor( Math.random() * ap_fish_area.length)];
     }else if(currentTime>22.5 & currentTime<=42.5){
       if(currentTime<=23.5){
         document.getElementById(`div_apfish${game_id}`).textContent = null;
         return;
       }
-      ap_fish_area = [0,2,4,6,7,8,9];
+      ap_fish_area = [0,2,4,6,7,8,9,10,11];
       var id = ap_fish_area[Math.floor( Math.random() * ap_fish_area.length)];
     }else if(currentTime>42.5){
       if(currentTime<=43.5){
         document.getElementById(`div_apfish${game_id}`).textContent = null;
         return;
       }
-      ap_fish_area = [0,3,5,7]
+      ap_fish_area = [0,3,5,6,9]
       var id = ap_fish_area[Math.floor( Math.random() * ap_fish_area.length)];
     }
   }else{
@@ -508,9 +514,9 @@ function add_records_1(catch_records, species, ap_fish, game_id, currentTime) {
       var rand = Math.random() * 101;
       if(rand <= 50){
         var sex = '雌'
-        mean += 3
+        mean += 2
         add_records_2(catch_records, "エゾメバル", mean, sd, game_id, currentTime, sex)
-        mean -= 3
+        mean -= 2
       }else{add_records_2(catch_records, "エゾメバル", mean, sd, game_id, currentTime, sex)
       };  
     };
