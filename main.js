@@ -337,56 +337,113 @@ function make_bar_chart(bar_data, barElem){
 }
 
 
-// CSV保存
-// 配列をcsvで保存するfunction
+// excel保存
 var download1 = document.getElementById("data_download1");
 download1.addEventListener('click',function(e){
-  exportCSV(e.target, catch_records1);
+  saveExcel1(catch_records1)
 });
 
 var download2 = document.getElementById("data_download2");
 download2.addEventListener('click',function(e){
-  exportCSV(e.target, catch_records2);
+  saveExcel2(catch_records2)
 });
 
-function exportCSV(link, content){
-  if(link.id == 'data_download1'){
-    var csv_data = "魚種,サイズ,性別" + "\r\n";
-    var csv_name = "game1.csv";
-      content.forEach(v => {
-      var row = `${v.species},${v.size},${v.sex}`;
-      csv_data += row + "\r\n";  
-    });
-  }else if(link.id == 'data_download2'){
-    var csv_data = "魚種,サイズ,エリア" + "\r\n";
-    var csv_name = "game2.csv";
-    content.forEach(v => {
-      if(v.time <= 23){
-        var area = '1';
-      }else if(v.time > 23 & v.time <=43){
-        var area = '2';
-      }else if(v.time > 43){
-        var area = '3';
-      }
-      var row = `${v.species},${v.size},${area}`;
-      csv_data += row + "\r\n";
-    });
-  }
-  let bom  = new Uint8Array([0xEF, 0xBB, 0xBF]);
-  let blob = new Blob([bom, csv_data], {type: 'text/csv'});
-  link.setAttribute('download', csv_name);
-
-  if (window.navigator.msSaveOrOpenBlob) {
-    // for ie
-    window.navigator.msSaveOrOpenBlob(blob, csv_name);
-  } else if (window.webkitURL && window.webkitURL.createObjectURL) {
-    // for chrome (and safari)
-    link.setAttribute('href', window.webkitURL.createObjectURL(blob));
-  } else if (window.URL && window.URL.createObjectURL) {
-    // for firefox
-    link.setAttribute('href', window.URL.createObjectURL(blob));
-  }
+// 配列をexcelで保存するfunction
+// SheetをWorkbookに追加する
+// 参照：https://github.com/SheetJS/js-xlsx/issues/163
+function sheet_to_workbook(sheet/*:Worksheet*/, opts)/*:Workbook*/ {
+  var n = opts && opts.sheet ? opts.sheet : "Sheet1";
+  var sheets = {}; sheets[n] = sheet;
+  return { SheetNames: [n], Sheets: sheets };
 }
+
+// ArrayをWorkbookに変換する
+// 参照：https://github.com/SheetJS/js-xlsx/issues/163
+function aoa_to_workbook(data/*:Array<Array<any> >*/, opts)/*:Workbook*/ {
+  return sheet_to_workbook(XLSX.utils.aoa_to_sheet(data, opts), opts);
+}
+
+// stringをArrayBufferに変換する
+// 参照：https://stackoverflow.com/questions/34993292/how-to-save-xlsx-data-to-file-as-a-blob
+function s2ab(s) {
+  var buf = new ArrayBuffer(s.length);
+  var view = new Uint8Array(buf);
+  for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+    return buf;
+}
+
+function saveExcel1(catch_data) {
+  // 配列作成
+  var ex_len = catch_data.length + 1;
+  var array1 = new Array(ex_len);
+  array1[0] = ["魚種", "サイズ", "性別"]; 
+  catch_data.forEach((v,i) => {
+    array1[i+1] = [v.species, v.size, v.sex];
+  });
+
+  // 書き込み時のオプションは以下を参照
+  // https://github.com/SheetJS/js-xlsx/blob/master/README.md#writing-options
+  var write_opts = {
+    type: 'binary'
+  };
+
+  // ArrayをWorkbookに変換する
+  var wb = aoa_to_workbook(array1);
+  var wb_out = XLSX.write(wb, write_opts);
+
+  // WorkbookからBlobオブジェクトを生成
+  // 参照：https://developer.mozilla.org/ja/docs/Web/API/Blob
+  var blob = new Blob([s2ab(wb_out)], { type: 'application/octet-stream' });
+
+  // FileSaverのsaveAs関数で、xlsxファイルとしてダウンロード
+  // 参照：https://github.com/eligrey/FileSaver.js/
+  saveAs(blob, 'game1.xlsx');
+}
+
+function saveExcel2(catch_data) {
+  // 配列作成
+  var ex_len = catch_data.length + 1;
+  var array1 = new Array(ex_len);
+  array1[0] = ["魚種", "サイズ", "エリア"]; 
+  catch_data.forEach((v,i) => {
+    if(v.time <= 23){
+      var area = '1';
+    }else if(v.time > 23 & v.time <=43){
+      var area = '2';
+    }else if(v.time > 43){
+      var area = '3';
+    }
+    array1[i+1] = [v.species, v.size, area];
+  });
+  var url = "game2.xlsx";
+
+  /* set up async GET request */
+  var req = new XMLHttpRequest();
+  req.open("GET", url, true);
+  req.responseType = "arraybuffer";
+
+  req.onload = function(e) {
+    var data = new Uint8Array(req.response);
+    var wb = XLSX.read(data, {type:"array"});
+
+    // xlsxファイルの読み込み
+    var ws = XLSX.utils.aoa_to_sheet(array1);
+
+    // ワークシートを設定
+    XLSX.utils.book_append_sheet(wb, ws, 'Data');
+    
+    /* bookType can be any supported output type */
+    var wopts = { bookType:'xlsx', bookSST:false, type:'array' };
+
+    var wbout = XLSX.write(wb,wopts);
+
+    /* the saveAs call downloads a file on the local machine */
+    saveAs(new Blob([wbout],{type:"application/octet-stream"}), url);    // // WorkbookからBlobオブジェクトを生成
+  }
+  req.send();
+}
+
+
 
 // 魚出現関数
 function appearfish(catch_records, counts, ap_fish, ap_record, game_id, currentTime){

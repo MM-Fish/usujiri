@@ -62,7 +62,7 @@
             <canvas id="chart1"></canvas>
           </div>
           <div class="div_result_ainame">
-            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt1"><p class="kadai">課題1</p><p>エゾメバルの雄と雌の<br>体長に有意差はある？</p><p><a class="data_download link" id="data_download1">データ取得</a>&<a class="ref link" id="ref1" href="kadai_game1.pdf" target="_blank">参考リンク</a></p></div>
+            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt1"><p class="kadai">課題1</p><p>エゾメバルの雄と雌の<br>体長に有意差はある？</p><p><a class="data_download link" id="data_download1">データ取得</a>&<a class="ref link" id="ref1" href="game1.pdf" target="_blank">参考リンク</a></p></div>
             <img class="div_result_ainame_gazou" src="gazou/index_result.png">
           </div>
         </div>
@@ -86,7 +86,7 @@
             <canvas id="chart2"></canvas>
           </div>
           <div class="div_result_ainame">
-            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt2"><p class="kadai">課題2</p><p>各エリア間の採集種の<br>共有率はどのくらい？</p><p><a class="data_download link" id="data_download2">データ取得</a>&<a class="ref link" id="ref2" href="kadai_game2.pdf" target="_blank">参考リンク</a></p></div>
+            <div class="div_result_ainame_cmt" id="div_result_ainame_cmt2"><p class="kadai">課題2</p><p>各エリア間の採集種の<br>共有率はどのくらい？</p><p><a class="data_download link" id="data_download2">データ取得</a>&<a class="ref link" id="ref2" href="game2.pdf" target="_blank">参考リンク</a></p></div>
             <img class="div_result_ainame_gazou" src="gazou/index_result.png">
           </div>
         </div>  
@@ -104,8 +104,11 @@
   </section>
 
   <section class="game" id=area1>
-    <video class="media" id="media1" preload="metadata">
+    <!-- <video class="media" id="media1" preload="metadata">
       <source src="gazou/game1.mov">
+    </video> -->
+    <video class="media" id="media1" preload="metadata">
+      <source src="https://drive.google.com/uc?export=download&id=1eK0tvtfEAVY7iyEIUiMDZs3MaowdaNSG" type='video/mp4'>
     </video>
     <div class="div_apfish", id="div_apfish1">
     </div>
@@ -134,7 +137,7 @@
 
 <section class="game" id=area2>
   <video class="media" id="media2" preload="metadata">
-    <source src="gazou/game2.mp4">
+    <source src="https://drive.google.com/uc?export=download&id=1L-HG8xStw9zNCPQ7o6a0KkLlws4MnyM8" type='video/mp4'>
   </video>
   <div class="div_apfish", id="div_apfish2">
   </div>
@@ -161,8 +164,11 @@
   </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.2/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- <script src="Chart.min.js"></script> -->
+<script src="jquery-3.5.1.min.js"></script>
 <script src="jquery.bgswitcher.js"></script>
 <script src="main.js"></script>
 </body>
